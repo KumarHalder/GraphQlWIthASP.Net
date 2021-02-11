@@ -1,13 +1,15 @@
 using GraphQL.Types;
+
 namespace GraphQlDotNet.Types
 {
-    public class ProductInputType : InputObjectGraphType
+    public class MenuInputType: InputObjectGraphType
     {
-        public ProductInputType()
+        public MenuInputType()
         {
             Field<IntGraphType>("id");
             Field<StringGraphType>("name");
-            Field<FloatGraphType>("price");
+            Field<StringGraphType>("imageUrl");
+            
         }
     }
 }
