@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using GraphiQl;
 using GraphQL.Server;
 using GraphQL.Types;
@@ -14,13 +10,10 @@ using GraphQlDotNet.Services;
 using GraphQlDotNet.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace GraphQlDotNet
@@ -38,11 +31,25 @@ namespace GraphQlDotNet
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddTransient<IProduct, ProductService>();
-            services.AddTransient<ProductType>();
-            services.AddTransient<ISchema,ProductSchema>();
-            services.AddTransient<ProductQuery>();
-            services.AddTransient<ProductMutation>();
+            services.AddTransient<IMenu, MenuService>();
+            services.AddTransient<ISubMenu, SubMenuService>();
+            services.AddTransient<IReservation, ReservationService>();
+            services.AddTransient<MenuType>();
+            services.AddTransient<SubMenuType>();
+            services.AddTransient<ReservationType>();
+            services.AddTransient<RootQuery>();
+            services.AddTransient<MenuQuery>();
+            services.AddTransient<SubMenuQuery>();
+            services.AddTransient<ReservationQuery>();
+            services.AddTransient<MenuMutation>();
+            services.AddTransient<SubmenuMutation>();
+            services.AddTransient<ReservationMutation>();
+            services.AddTransient<RootMutation>();
+            services.AddTransient<MenuInputType>();
+            services.AddTransient<SubmenuInputType>();
+            services.AddTransient<ReservationInputType>();
+            services.AddTransient<ISchema,RootSchema>();
+
             services.AddGraphQL(options =>
             {
                 options.EnableMetrics = false;
